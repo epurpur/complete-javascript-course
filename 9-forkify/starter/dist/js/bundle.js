@@ -81,7 +81,7 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/index.js");
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -90,11 +90,11 @@
 /*!*************************!*\
   !*** ./src/js/index.js ***!
   \*************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("\n\nvar _test = __webpack_require__(/*! ./test */ \"./src/js/test.js\");\n\nvar _test2 = _interopRequireDefault(_test);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar x = 23; // Global app controller\n\nconsole.log('I imported ' + _test2.default + ' from another module called test.js Varaible x is ' + x);\nconsole.log('hello world IS THIS WORKING?');\n\n//# sourceURL=webpack:///./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _test__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./test */ \"./src/js/test.js\");\n// Global app controller\n\n\n\nconsole.log(`I imported ${_test__WEBPACK_IMPORTED_MODULE_0__[\"default\"]} from another module!`);\n\n//# sourceURL=webpack:///./src/js/index.js?");
 
 /***/ }),
 
@@ -102,22 +102,11 @@ eval("\n\nvar _test = __webpack_require__(/*! ./test */ \"./src/js/test.js\");\n
 /*!************************!*\
   !*** ./src/js/test.js ***!
   \************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nconsole.log('Imported Module');\n\nexports.default = 123456;\n\n//# sourceURL=webpack:///./src/js/test.js?");
-
-/***/ }),
-
-/***/ 0:
-/*!*******************************!*\
-  !*** multi ./src/js/index.js ***!
-  \*******************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-eval("module.exports = __webpack_require__(/*! ./src/js/index.js */\"./src/js/index.js\");\n\n\n//# sourceURL=webpack:///multi_./src/js/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n\nconsole.log('Imported Module');\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (12345);    //exporting this value. like a return statement in a python function\n\n//# sourceURL=webpack:///./src/js/test.js?");
 
 /***/ })
 
