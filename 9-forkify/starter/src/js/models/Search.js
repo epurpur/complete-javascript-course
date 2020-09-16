@@ -6,6 +6,7 @@ export default class Search {
 		this.query = query;
 	}
 
+	// asynchronous functions automatically return a promise
 	async getResults(query) {
 		try {
 			const res = await axios(`https://forkify-api.herokuapp.com/api/search?q=${this.query}`)
