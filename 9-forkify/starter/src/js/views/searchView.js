@@ -13,6 +13,7 @@ export const clearInput = () => {
 
 export const clearResults = () => {
 	elements.searchResList.innerHTML = '';  //setting HTML inside will be empty
+	elements.searchResPages.innerHTML = '';
 };
 
 
@@ -56,8 +57,60 @@ const renderRecipe = recipe => {
 	elements.searchResList.insertAdjacentHTML('beforeend', markup);  //new element will be put on end of list with 'beforeend' argument
 };
 
+// type: 'prev' or 'next'
+const createButton = (page, type) => `
+	<button class="btn-inline results__btn--${type}" data-goto=${type === 'prev' ? page - 1 : page + 1}>
+		<span>Page ${type === 'prev' ? page - 1 : page + 1}</span>
+        <svg class="search__icon">
+        	<use href="img/icons.svg#icon-triangle-${type === 'prev' ? 'left' : 'right'}"></use>
+        </svg>
+                    
+    </button>
+`;
 
-export const renderResults = recipes => {
-	recipes.forEach(renderRecipe);  //best way to loop through array is to use forEach() built-in function
+
+const renderButtons = (page, numResults, resPerPage=10) => {
+	const pages = Math.ceil(numResults / resPerPage)  //rounds number up to next integer
+
+	let button;
+
+	if (page === 1 && pages > 1) {
+		// Only button to go to next page, if there is more than 1 page. 
+		button = createButton(page, 'next');
+	} else if (page < pages) {
+		// both next and previous button
+		button = `
+			${createButton(page, 'prev')}
+			${createButton(page, 'next')}
+		`;
+	} else if (page === pages && pages > 1) {
+		// Only button to previous page, if there is more than 1 page.
+		button = createButton(page, 'prev');
+	}
+
+	elements.searchResPages.insertAdjacentHTML('afterbegin', button);
+
 };
+
+
+export const renderResults = (recipes, page=1, resPerPage=10) => {
+	// render results of current page
+	const start = (page - 1) * resPerPage;
+	const end = page * resPerPage;
+
+	recipes.slice(start, end).forEach(renderRecipe);  //best way to loop through array is to use forEach() built-in function
+
+	//render pagination buttons
+	renderButtons(page, recipes.length, resPerPage);
+};
+
+
+
+
+
+
+
+
+
+
 
