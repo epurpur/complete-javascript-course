@@ -17,6 +17,16 @@ export const clearResults = () => {
 };
 
 
+export const highlightSelected = id => {
+	const resultsArr = Array.from(document.querySelectorAll('.results__link'))
+	resultsArr.forEach(element => {
+		element.classList.remove('results__link--active');
+	});
+
+	document.querySelector(`a[href="#${id}"]`).classList.add('results__link--active');
+};
+
+
 const limitRecipeTitle = (title, limit=17) => {
 	//limits recipe title to 17 characters
 	const newTitle = [];
@@ -103,14 +113,5 @@ export const renderResults = (recipes, page=1, resPerPage=10) => {
 	//render pagination buttons
 	renderButtons(page, recipes.length, resPerPage);
 };
-
-
-
-
-
-
-
-
-
 
 
